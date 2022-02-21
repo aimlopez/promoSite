@@ -22,51 +22,49 @@
     </header>
     <section class="block_content m-4">
         <div class="container">
-            <div class="row justify_content_center">
-                <div class="boxes about-us col-xl-6">
-                    <div>
-                        <p class="h3">Vi söker dig</p>
-                        <p>Gillar du:</p>
-                        <ul>
-                            <li>Programmera på fritids</li>
-                            <li>Visualisera data från IoT</li>
-                            <li>Bygga små gadgets</li>
-                        </ul>
-                        <p class="lead"> Låt oss få veta det, oavsett vad du jobbar med idag.</p>
-                    </div>
-                    <div class="box-info p-3">
-                        <p class="h5">Computer Vision</p>
-                        <p class="mb-0 blockquote text-center">Computer vision är ett fält av <span class="blue-text">artificiell
-                                intelligens</span> som tränar datorer att tolka och förstå visuell värld.
-                                Det använder digitala bilder från kameror och videor och
-                                <span class="blue-text">djupinlärning modeller</span> så maskiner kan identifiera och
-                                klassificera exakt objekt - och sedan reagera på vad de "ser".
-                        </p>
-
-                    </div>
-
-                </div>
-                <div class="hand-tacking col-xl-6 text-center">
-                    <div class="hand-tracking_title ">
+            <!-- <div class="row justify_content_center"> -->
+                <div class="boxes col-xl-12 text-center">
+                    <div class="boxes-title mb-5">
                          <h2>PROVA PÅ COMPUTER VISION</h2>
                     </div>
-                    <div class="hand-tracking_description">
+                    <div class="boxes-cards d-flex flex-row">
                         <!-- <p>Antar du uppmaningen?? Hur lyfter du detta föremål?</p> -->
                         <div class="card mx-auto" style="width: 18rem;">
                             <img class="card-img-top" src="{% static 'images/hand_tracking.jpg' %}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">Hand Tracking</h5>
-                                <p class="card-text">Testa detta Computer Vision uppgift där du kan visa att du kan lifta
-                                    ett föremål utan att skada dig</p>
+                                <h4 class="card-title">Hand Tracking</h4>
+                                <p class="card-text">Testa att lifta föremålet utan att skada dig</p>
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     <input type="submit" class="btn btn-primary" value="START" name="hand_tracking" id="hand_tracking" />
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                        <div class="card mx-auto" style="width: 18rem;">
+                            <img class="card-img-top" src="{% static 'images/hand_tracking.jpg' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Body Posture</h4>
+                                <p class="card-text">Testa arm position that can hurt you at work</p>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <input type="submit" class="btn btn-primary" value="START" name="body_posture" id="body_posture" />
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card mx-auto" style="width: 18rem;">
+                            <img class="card-img-top" src="{% static 'images/hand_tracking.jpg' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Object Recognition</h4>
+                                <p class="card-text">Identifiera objects around you</p>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <input type="submit" class="btn btn-primary" value="START" name="object_recognition" id="object_recognition" />
+                                </form>
+                            </div>
+                        </div>
+                    </div> <!-- ENd boxes-card -->
+                </div> <!-- End of boxes -->
+           <!-- </div> -->
         </div>
     </section>
  <!-- <script src="js/scripts.js"></script> -->

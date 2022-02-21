@@ -1,27 +1,10 @@
 /* Main Page */
 body{
-    font-family: Roboto, SansSerif;
+    font-family: Roboto, Helvetica, Geneva, sans-serif;
 }
 header{
     background-color: #041e42;
     color: whitesmoke;
     height: 120px;
 }
-.blue-text{
-    color: rgb(0, 123, 189)
-}
 
-.about-us > div:first-child{
-    font-size: 1.2rem;
-}
-.blockquote{
-    font-size: 1rem;
-}
-.boxes{
-    padding: 32px;
-}
-
-.box-info{
-    margin-top: 3rem;
-    background-color: #f2f2f2;
-}
