@@ -154,8 +154,11 @@ def main():
         detector.write_image_message(image, right_stage, 'right', right_angle)
         detector.write_image_message(image, left_stage, 'left', left_angle)
 
-        cv2.imshow('Feed', image)
-
+        # Show screen
+        cv2.putText(image, "Press 'q' over the screen to exit", (10, 700), cv2.FONT_HERSHEY_COMPLEX, 1,
+                    (0, 0, 255), 1, cv2.LINE_AA)
+        cv2.imshow('Body Posture', image)
+        cv2.setWindowProperty('Body Posture', cv2.WND_PROP_TOPMOST, 1)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
