@@ -12,7 +12,7 @@ def home(request):
             os.system('python scripts/handtracking.py')
         elif "body_posture" in request.POST:
             os.system('python scripts/bodyposture.py')
-        elif "object_recognition" in request.POST:
-            os.system('python scripts/objectrecognition.py')
+        elif "object_detection" in request.POST:
+            os.system('python scripts/object_detection/objectdetection.py')
 
     return render(request, 'handtracking/index.html')

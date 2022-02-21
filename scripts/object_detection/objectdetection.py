@@ -1,17 +1,24 @@
+import os
 import cv2
 
+
 # image = cv2.imread('faces.jpg')
+from django.conf import settings
+base_dir = settings.BASE_DIR
+
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
 
 class_names = []
-class_file = 'coco-labels'
+
+class_file = os.path.join(base_dir, 'scripts\object_detection', 'coco-labels')
+print(class_file)
 with open(class_file, 'rt') as f:
     class_names = f.read().rstrip('\n').split('\n')
 
-config_path = 'ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt'
-weights_path = 'frozen_inference_graph.pb'
+config_path = os.path.join(base_dir, 'scripts\object_detection','ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt')
+weights_path = os.path.join(base_dir, 'scripts\object_detection', 'frozen_inference_graph.pb')
 
 net = cv2.dnn_DetectionModel(weights_path, config_path)
 net.setInputSize(320, 320)
