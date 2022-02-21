@@ -80,6 +80,7 @@ class PostureDetector:
             stage = "down"
             return stage
 
+    # TODO: change this function to object oriented programming
     def get_angle(self, angle, counter=0):
         if angle > 90.0:
             counter += 1
@@ -89,6 +90,7 @@ class PostureDetector:
             stage = "down"
             return stage
 
+    # TODO: change this function to object oriented programming
     def write_image_message(self, image, stage, position, angle):
         if stage == 'up' and position == 'right':
             cv2.rectangle(image, (0, 0), (225, 93), (26, 21, 223), -1)
@@ -154,7 +156,7 @@ def main():
 
         cv2.imshow('Feed', image)
 
-        if cv2.waitKey(10) & 0xFF == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
     cap.release()
