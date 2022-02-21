@@ -123,7 +123,7 @@ def main():
 
         cv2.imshow('Hur lifter du föremålet', img)  # showing img not imgRGB
         cv2.setWindowProperty('Hur lifter du föremålet', cv2.WND_PROP_TOPMOST, 1)
-        if cv2.waitKey(10) & 0xFF == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
     cap.release()
