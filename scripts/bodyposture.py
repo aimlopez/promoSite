@@ -120,8 +120,8 @@ class PostureDetector:
 
 
 def main():
-    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+    cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 920)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
     detector = PostureDetector()
 
@@ -138,6 +138,7 @@ def main():
         cv2.putText(image, str(left_angle),
                     tuple(np.multiply(lmlist['lshoulder'], [1280, 720]).astype(int)),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
+
         # Visualize right angle
         cv2.putText(image, str(right_angle),
                     tuple(np.multiply(lmlist['rshoulder'], [1280, 720]).astype(int)),

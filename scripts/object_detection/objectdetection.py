@@ -6,9 +6,9 @@ import cv2
 from django.conf import settings
 base_dir = settings.BASE_DIR
 
-cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
+cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 920)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
 class_names = []
 
@@ -33,10 +33,11 @@ while True:
     # print(class_ids, bbox)
     if len(class_ids) != 0:
         for class_id, confidence, box in zip(class_ids.flatten(), confs.flatten(), bbox):
-            cv2.rectangle(image, box, color=(0, 255, 0), thickness=2)
-            cv2.putText(image, class_names[class_id-1], (box[0]+10, box[1]+30), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,255,0), 1)
+            cv2.rectangle(image, box, color=(245, 117, 66), thickness=2)
+            cv2.putText(image, class_names[class_id-1], (box[0]+10, box[1]+30), cv2.FONT_HERSHEY_COMPLEX, 0.5, (245, 117, 66), 1)
 
         cv2.imshow('Object Recognition', image)
+        cv2.setWindowProperty('Object Recognition', cv2.WND_PROP_TOPMOST, 1)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
