@@ -15,7 +15,7 @@ class PostureDetector:
         self.track_conf = track_conf
         self.pose = self.mp_pose.Pose(self.detection_conf, self.track_conf)
 
-    def find_pose(self, image, draw=True):
+    def find_pose(self, image):
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         image.flags.writeable = False
         self.results = self.pose.process(image)
@@ -120,7 +120,7 @@ class PostureDetector:
 
 
 def main():
-    cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 920)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
     detector = PostureDetector()
@@ -136,12 +136,12 @@ def main():
 
         # Visualize left angle
         cv2.putText(image, str(left_angle),
-                    tuple(np.multiply(lmlist['lshoulder'], [1280, 720]).astype(int)),
+                    tuple(np.multiply(lmlist['lshoulder'], [920, 720]).astype(int)),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
 
         # Visualize right angle
         cv2.putText(image, str(right_angle),
-                    tuple(np.multiply(lmlist['rshoulder'], [1280, 720]).astype(int)),
+                    tuple(np.multiply(lmlist['rshoulder'], [920, 720]).astype(int)),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                     )
 

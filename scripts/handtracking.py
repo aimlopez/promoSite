@@ -18,13 +18,15 @@ class HandDetector:
         self.mp_drawing_styles = mp.solutions.drawing_styles
         self.tipIds = [4, 8, 12, 16, 20]
 
-    def find_hands(self, img, draw=True):
-        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # converting to RGB bcoz hand recognition works only on RGB image
-        self.results = self.hands.process(imgRGB)  # processing the RGB image
+    def find_hands(self, img):
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # converting to RGB bcoz hand recognition works only on RGB image
+        img.flags.writeable = False
+        self.results = self.hands.process(img)  # processing the RGB image
+        img.flags.writeable = True
+        img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
         if self.results.multi_hand_landmarks:  # gives x,y,z of every landmark or if no hand than NONE
             for handLms in self.results.multi_hand_landmarks:  # each hand landmarks in results
-                if draw:
-                    self.mp_draw.draw_landmarks(img, handLms, self.mp_hands.HAND_CONNECTIONS)
+                self.mp_draw.draw_landmarks(img, handLms, self.mp_hands.HAND_CONNECTIONS)
 
         return img
 
@@ -90,7 +92,7 @@ class HandDetector:
 def main():
     # PTime = 0  # previous time
     # CTime = 0  # current time
-    cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 920)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
     detector = HandDetector()
